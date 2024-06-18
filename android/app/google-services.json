@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "361484708239",
+    "project_id": "crudtutorial-bbf1c",
+    "storage_bucket": "crudtutorial-bbf1c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361484708239:android:1bee6ef597dc8293ea43fa",
+        "android_client_info": {
+          "package_name": "com.example.crudfirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2mpOI4bu5L7Ib15714qwIMcBJoi5FWSc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
