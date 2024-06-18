@@ -7,12 +7,18 @@ class FirestoreService{
   
   
   // create : add a new note
-Future<void> addNote(String note){
-  return notes.add(
-      {
-        'note': note,
-        'timestamp': Timestamp.now(),
-      }
-  );
-}
+  Future<void> addNote(String note){
+    return notes.add(
+        {
+          'note': note,
+          'timestamp': Timestamp.now(),
+        }
+    );
+  }
+
+  // read : get notes from database
+  Stream<QuerySnapshot> getNotesStream(){
+    final notesStream = notes.orderBy('timestamp', descending: true).snapshots();
+    return notesStream;
+  }
 }

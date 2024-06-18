@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:online_database_firebase/services/firestore.dart';
 
@@ -50,6 +51,39 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: openNoteBox,
         child: const Icon(Icons.add),
+      ),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: firestoreService.getNotesStream(),
+        builder: (context, snapshot){
+            // if we have data, get all the docs
+          if (snapshot.hasData){
+            List notesList = snapshot.data!.docs;
+
+            // display as a list
+            return ListView.builder(
+              itemCount: notesList.length,
+                itemBuilder: (context, index){
+                  // get each individual doc
+                  DocumentSnapshot document = notesList[index];
+                  String docID = document.id;
+
+                  // get note from eaxh doc
+                  Map<String, dynamic> data =
+                  document.data() as Map<String, dynamic>;
+                  String noteText = data['note'];
+
+                  // display as a list tile
+                  return ListTile(
+                    title: Text(noteText),
+                  );
+                },
+            );
+          } 
+          else{
+            return const Text('No note...');
+          }
+
+        },
       ),
     );
   }
